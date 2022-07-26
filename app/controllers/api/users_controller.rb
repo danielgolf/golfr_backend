@@ -7,7 +7,7 @@ module Api
       user = User.find(params[:id])
 
       response = {
-        user: user.to_json
+        user: user.serialize
       }
 
       render json: response.to_json
@@ -19,9 +19,7 @@ module Api
       serialized_scores = scores.map(&:serialize)
 
       response = {
-        user: {
-          scores: serialized_scores
-        }
+        scores: serialized_scores
       }
 
       render json: response.to_json

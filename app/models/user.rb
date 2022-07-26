@@ -1,3 +1,4 @@
+# Model to represent a golfer
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::JTIMatcher
 

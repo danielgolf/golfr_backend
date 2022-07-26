@@ -3,13 +3,11 @@ module Api
   class UsersController < ApplicationController
     include Devise::Controllers::Helpers
 
-    def name
+    def show
       user = User.find(params[:id])
 
       response = {
-        user: {
-          name: user.name
-        }
+        user: user.to_json
       }
 
       render json: response.to_json

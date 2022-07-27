@@ -3,6 +3,28 @@ module Api
   class UsersController < ApplicationController
     include Devise::Controllers::Helpers
 
+    def show
+      user = User.find(params[:id])
+
+      response = {
+        user: user.serialize
+      }
+
+      render json: response.to_json
+    end
+
+    def scores
+      user = User.find(params[:id])
+      scores = user.scores.order(played_at: :desc, id: :desc)
+      serialized_scores = scores.map(&:serialize)
+
+      response = {
+        scores: serialized_scores
+      }
+
+      render json: response.to_json
+    end
+
     def login
       user = User.find_by('lower(email) = ?', params[:email])
 

@@ -10,7 +10,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get show' do
-    get api_golfer_url(@user.id)
+    get api_golfers_url(@user.id)
     assert_response :success
 
     user = JSON.parse(response.body)
@@ -19,7 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get scores' do
-    get api_golfer_scores_url(@user.id)
+    get api_golfers_scores_url(@user.id)
     assert_response :success
 
     scores = JSON.parse(response.body)

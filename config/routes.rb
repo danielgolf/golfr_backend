@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     post 'login', to: 'users#login'
-    get 'golfer/:id', to: 'users#show', as: 'golfer'
-    get 'golfer/:id/scores', to: 'users#scores', as: 'golfer_scores'
+    get 'golfers/:id', to: 'users#show', as: 'golfers'
+    get 'golfers/:id/scores', to: 'users#scores', as: 'golfers_scores'
     get 'feed', to: 'scores#user_feed'
     resources :scores, only: %i[create destroy]
   end

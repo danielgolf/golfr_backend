@@ -9,10 +9,7 @@ class User < ApplicationRecord
   def serialize
     {
       id: id,
-      name: name,
-      jti: jti,
-      created_at: created_at,
-      updated_at: updated_at,
+      name: name
     }
   end
 end

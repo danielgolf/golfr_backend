@@ -26,6 +26,18 @@ describe Api::ScoresController, type: :request do
       expect(scores[1]['total_score']).to eq 68
       expect(scores[2]['total_score']).to eq 79
     end
+
+    it 'feed should have no more than 25 entries' do
+      30.times do
+        create(:score, user: @user1, total_score: 78, played_at: '2020-05-15')
+      end
+      get api_feed_path
+
+      expect(response).to have_http_status(:ok)
+      response_hash = JSON.parse(response.body)
+      scores = response_hash['scores']
+      expect(scores.count).to eq 25
+    end
   end
 
   describe 'POST create' do

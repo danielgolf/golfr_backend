@@ -27,7 +27,7 @@ describe Api::ScoresController, type: :request do
       expect(scores[2]['total_score']).to eq 79
     end
 
-    it 'feed should have no more than 25 entries' do
+    it 'should have no more than 25 entries' do
       30.times do
         create(:score, user: @user1, total_score: 78, played_at: '2020-05-15')
       end
